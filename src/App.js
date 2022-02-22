@@ -1,4 +1,5 @@
 import './App.css';
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
 
       <main className="App-main">
         app main
-        <h1>Projektarbete - E Wallet</h1>
+        <HomePage/>
       </main>
 
       <footer className="App-footer">
