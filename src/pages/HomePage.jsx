@@ -1,3 +1,4 @@
+import { useSelector, useDispatch } from "react-redux"
 // aktiva kort
 
 // resterande kort
@@ -5,7 +6,11 @@
 // lägg till kort
 
 
-const HomePage = _ => {
+const HomePage = test => {
+  console.log(test);
+  let nameState = useSelector(state => {
+    console.log(state);
+  })
   // state/effects, actions
 
   return (
@@ -19,6 +24,8 @@ const HomePage = _ => {
     <section id="inactive-cards">
       <p>inactive cards</p>
     </section>
+
+    <button>add new card</button>
     </>
   )
 }

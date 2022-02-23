@@ -22,12 +22,14 @@ Applikationen ska ha två routes (du får ändra namnet på dessa om du vill) :
 ●  Ett nytt kort ska kunna läggas till med följande information: Vendor, card number, cardholder, expire month, expire year, CCV. (Se bild nedan).
 ●  För kortutgivare ska du hårdkoda in minst tre alternativ man kan välja mellan. Den användaren väljer ska stå på kortet uppe till höger (t.ex. Mastercard, Visa, American Express etc. Eller om ni vill hitta på något roligare!).
 ●  Högst upp ska en förhandsvisning av kortet finnas, som uppdateras automatiskt när användare fyller i informationen.
+
 Funktionella krav
 För att få Godkänt ska du:
 ●  Ha använt React och Redux för att lösa uppgiften.
 ●  Lagt till grundläggande funktionalitet som att visa ut samtliga kort och lägga till betalkort.
 ●  Det är en single file application (SPA) som använder react-router.
 ●  Det ska finnas ett aktivt betalkort vid start av applikationen.
+
 För att få Väl Godkänt ska du:
 ●  Gör ett API call vid start av applikationen, där du hämtar en slumpvald användare från följande API: https://randomuser.me/api/.
 ●  Denna personens för och efternamn ska stå med stora bokstäver på samtliga kort som finns/skapas.
