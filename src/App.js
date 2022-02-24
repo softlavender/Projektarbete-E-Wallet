@@ -1,28 +1,25 @@
 import './App.css';
 import HomePage from "./pages/HomePage"
-import addCard from "./pages/addCard"
+import AddCard from "./pages/AddCard.jsx"
 import { Routes, Route } from "react-router-dom"
 
 function App() {
+  console.log('App.jsx');
+  // namn och efternamn kan hämtas här från cardSlice och skicka till AddCard
 
   return (
     <div className="App">
       <header className="App-header">
-        app header
+      <h1>Projektarbete - E-wallet</h1>
       </header>
 
       
       <main className="App-main">
-        app main
         <Routes>
           <Route exact path='/' element={<HomePage />}/>
-          <Route path='/addCard' element={<addCard />}/>
+          <Route path='/addcard' element={<AddCard />}/>
         </Routes>
       </main>
-
-      <footer className="App-footer">
-        app footer
-      </footer>
     </div>
   );
 }

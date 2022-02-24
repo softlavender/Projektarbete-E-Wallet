@@ -1,36 +1,37 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 
-export const getUserInfo = createAsyncThunk("/getUserInfo", async () => {
-  let response = await fetch("https://randomuser.me/api/");
-  let json = await response.json();
-  console.log(json);
-  return json;
-  //det som returneras här, kommer att bli vår action.payload
-});
+// export const getUserInfo = createAsyncThunk("/getUserInfo", async () => {
+//   let response = await fetch("https://randomuser.me/api/");
+//   let userInfo = await response.json();
+//   console.log(userInfo);
+//   return userInfo;
+//   //det som returneras här, kommer att bli vår action.payload
+// });
 
 
-const cardSlice = createSlice({
+const cardsSlice = createSlice({
   name: 'cards',
 
   // state
   initialState: {
     cards: [
       {
-        name: 'hello',
-        lastname: null,
-        vendor: 'visa',
-        cardNr: 12334567891234121212,
-        expireMonth: 22,
-        expireYear: 9292,
+        firstname: 'Array',
+        // name: 'Holum',
+        lastname: 'Length',
+        vendor: 'Visa',
+        cardNr: '1233 4567 8912 0000',
+        expireMonth: 4,
+        expireYear: 3024,
         CCV: 123
       }
     ]
   },
 
   // reducers/actions
-  extraReducers: {
+  reducers: {
     changeName: (state, action) => {
-      state.cards.name = 'updated something'
+      state.cards.push(action.payload)
     },
     // [getUserInfo.fulfilled]: (state, action) => {
     //   // let updatedTodos = state.todos.concat(action.payload);
@@ -54,8 +55,8 @@ const cardSlice = createSlice({
   // }
 })
 
-export const {changeName} = cardSlice.actions
-export default cardSlice.reducer
+export const {changeName} = cardsSlice.actions
+export default cardsSlice.reducer
 
 
 
