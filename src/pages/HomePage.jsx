@@ -5,7 +5,7 @@ import { changeName } from "../redux/cardsSlice";
 const HomePage = _ => {
   console.log('HomePage.jsx');
   
-  let {firstname, lastname, vendor, cardNr, expireMonth, expireYear, CCV} = useSelector(state => {
+  let {randomUser, vendor, cardNr, expireMonth, expireYear, CCV} = useSelector(state => {
     console.log(state.cards.cards);
     return state.cards.cards[0]
   })
@@ -22,12 +22,12 @@ const HomePage = _ => {
   return (
     <div id="e-wallet">
       <section id="active-card">
-        <h1>active card</h1>
+        <h1>Active Card</h1>
           
         {/* kan funktion som returnerar första card från card arrayen */}
         <div className="card">
-          <p>firstname: {firstname}</p>
-          <p>lastname: {lastname}</p>
+          <p>firstName: {randomUser.firstName}</p>
+          <p>lastName: {randomUser.lastName}</p>
           <p>vendor: {vendor}</p>
           <p>cardNr: {cardNr}</p>
           <p>expireMonth: {expireMonth}</p>
@@ -37,12 +37,12 @@ const HomePage = _ => {
       </section>
 
       <section id="inactive-cards">
-        <h1>inactive cards</h1>
+        <h1>Inactive Cards</h1>
         
         {/* bör göra map över cards arrayen och skapa de kort som finns*/}
         <div className="card">
-          <p>firstname: {firstname}</p>
-          <p>lastname: {lastname}</p>
+          <p>firstName: {randomUser.firstName}</p>
+          <p>lastName: {randomUser.lastName}</p>
           <p>vendor: {vendor}</p>
           <p>cardNr: {cardNr}</p>
           <p>expireMonth: {expireMonth}</p>
@@ -51,8 +51,8 @@ const HomePage = _ => {
         </div>
         
         <div className="card">
-          <p>firstname: {firstname}</p>
-          <p>lastname: {lastname}</p>
+          <p>firstName: {randomUser.firstName}</p>
+          <p>lastName: {randomUser.lastName}</p>
           <p>vendor: {vendor}</p>
           <p>cardNr: {cardNr}</p>
           <p>expireMonth: {expireMonth}</p>

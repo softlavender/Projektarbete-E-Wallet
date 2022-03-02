@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
+
 const AddCard = () => {
   // state
   let cardsData = useSelector((state) => {
@@ -30,6 +31,7 @@ const AddCard = () => {
   }
 
   return (
+
     <>
       <h1>add card</h1>
       <div>
