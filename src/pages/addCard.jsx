@@ -1,7 +1,7 @@
 // imports
 import { useDispatch, useSelector } from "react-redux"
 
-const AddCard = () => {
+const addCard = () => {
   console.log('AddCard.jsx');
 
   // state
@@ -20,7 +20,7 @@ const AddCard = () => {
   )
 }
 
-export default AddCard
+export default addCard
 
 
 // Lägg till nytt kort
