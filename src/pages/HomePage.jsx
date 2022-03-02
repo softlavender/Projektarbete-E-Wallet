@@ -67,7 +67,9 @@ const HomePage = _ => {
       </Link> */}
       
       {/* test 1 */}
+      <Link to={{ pathname: "/addcard" }}>
       <button id="add-card" onClick={test1}>add new card</button>
+      </Link>
     </div>
   )
 }

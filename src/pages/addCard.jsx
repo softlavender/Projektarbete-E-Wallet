@@ -1,7 +1,7 @@
 // imports
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 
 const AddCard = () => {
   // state
@@ -12,13 +12,13 @@ const AddCard = () => {
   // state/effects, actions
   const dispatch = useDispatch();
 
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [vendor, setVendor] = useState("")
-  const [cardnumber, setCardnumber] = useState("")
-  const [expireMonth, setExpireMonth] = useState("")
-  const [expireYear, setExpireYear] = useState("")
-  const [CCV, setCCV] = useState("")
+  const [firstName, setFirstName] = useState("Firstname");
+  const [lastName, setLastName] = useState("Lastname");
+  const [vendor, setVendor] = useState("Vendor");
+  const [cardnumber, setCardnumber] = useState("xxxx xxxx xxxx xxxx");
+  const [expireMonth, setExpireMonth] = useState("xx");
+  const [expireYear, setExpireYear] = useState("xxxx");
+  const [CCV, setCCV] = useState("xxx");
 
   let newCard = {
     firstname: firstName,
@@ -27,27 +27,50 @@ const AddCard = () => {
     cardNr: cardnumber,
     expireMonth: expireMonth,
     expireYear: expireYear,
-    CCV: CCV
-  }
+    CCV: CCV,
+    isActive: false
+  };
 
   return (
-
     <>
       <h1>add card</h1>
-      <div>
-        <p>{firstName}</p>
-        <p>{lastName}</p>
+      <div className="newCard">
+        <p>{firstName} {lastName}</p>
         <p>{cardnumber}</p>
-        <p>{expireMonth}</p>
-        <p>{expireYear}</p>
+        <p>{expireMonth} / {expireYear}</p>
         <p>{CCV}</p>
         <p>{vendor}</p>
       </div>
-      <div>
-        <input type="text" id="firstname" placeholder="Firstname" onChange={e => setFirstName(e.target.value)} />
-        <input type="text" id="lastname" placeholder="Lastname" onChange={e => setLastName(e.target.value)}/>
-        <input type="number" id="cardNr" placeholder="Card number" onChange={e => setCardnumber(e.target.value)}/>
-        <select id="expireMonth" onChange={e => setExpireMonth(e.target.value)}>
+      <div className="createCard">
+        <input
+          type="text"
+          id="firstname"
+          placeholder="Firstname"
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input
+          type="text"
+          id="lastname"
+          placeholder="Lastname"
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <br />
+        <input
+          type="tel"
+          id="cardNr"
+          placeholder="Card number"
+          maxLength={16}
+          onChange={(e) => setCardnumber(e.target.value)}
+        />
+        <br />
+        <select
+          id="expireMonth"
+          defaultValue={"disabled"}
+          onChange={(e) => setExpireMonth(e.target.value)}
+        >
+          <option value="disabled" disabled>
+            Experation month
+          </option>
           <option value="01">01</option>
           <option value="02">02</option>
           <option value="03">03</option>
@@ -62,7 +85,14 @@ const AddCard = () => {
           <option value="12">12</option>
         </select>
         /
-        <select id="expireYear" onChange={e => setExpireYear(e.target.value)}>
+        <select
+          id="expireYear"
+          defaultValue={"disabled"}
+          onChange={(e) => setExpireYear(e.target.value)}
+        >
+          <option value="disabled" disabled>
+            Experation year
+          </option>
           <option value="2023">2023</option>
           <option value="2024">2024</option>
           <option value="2025">2025</option>
@@ -74,15 +104,39 @@ const AddCard = () => {
           <option value="2031">2031</option>
           <option value="2032">2032</option>
         </select>
-        <input type="number" id="CCV" placeholder="CCV" onChange={e => setCCV(e.target.value)}/>
-        <select id="vendor" onChange={e => setVendor(e.target.value)}>
+        <input
+          type="tel"
+          id="CCV"
+          placeholder="CCV"
+          maxLength={3}
+          onChange={(e) => setCCV(e.target.value)}
+        />
+        <br />
+        <select
+          id="vendor"
+          defaultValue={"disabled"}
+          onChange={(e) => setVendor(e.target.value)}
+        >
+          <option value="disabled" disabled>
+            Choose a vendor
+          </option>
           <option value="Mastercard">Mastercard</option>
           <option value="Visa">Visa</option>
           <option value="American Expess">American Expess</option>
         </select>
-        <button>Add Card</button>
+        <br />
+        <button className="addBtn"
+          onClick={() => {
+            console.log(newCard);
+            // dispatch(addNewCard(newCard))
+          }}
+        >
+          Add Card
+        </button>
       </div>
-      <button>Return to homepage</button>
+      <Link to={{ pathname: "/" }}>
+        <button>Return to homepage</button>
+      </Link>
     </>
   );
 };
