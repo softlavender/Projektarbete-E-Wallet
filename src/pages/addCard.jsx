@@ -1,6 +1,6 @@
 // imports
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 
 const AddCard = () => {
@@ -11,7 +11,6 @@ const AddCard = () => {
 
   // state/effects, actions
   const dispatch = useDispatch();
-
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [vendor, setVendor] = useState("")
@@ -19,10 +18,11 @@ const AddCard = () => {
   const [expireMonth, setExpireMonth] = useState("")
   const [expireYear, setExpireYear] = useState("")
   const [CCV, setCCV] = useState("")
+  const {randomUser} = useSelector((state) => state.cards);
 
   let newCard = {
-    firstname: firstName,
-    lastname: lastName,
+    firstName: randomUser.firstName,
+    lastName: randomUser.lastName,
     vendor: vendor,
     cardNr: cardnumber,
     expireMonth: expireMonth,
@@ -35,8 +35,8 @@ const AddCard = () => {
     <>
       <h1>add card</h1>
       <div>
-        <p>{firstName}</p>
-        <p>{lastName}</p>
+        <p>{randomUser.firstName}</p>
+        <p>{randomUser.lastName}</p>
         <p>{cardnumber}</p>
         <p>{expireMonth}</p>
         <p>{expireYear}</p>
@@ -44,8 +44,8 @@ const AddCard = () => {
         <p>{vendor}</p>
       </div>
       <div>
-        <input type="text" id="firstname" placeholder="Firstname" onChange={e => setFirstName(e.target.value)} />
-        <input type="text" id="lastname" placeholder="Lastname" onChange={e => setLastName(e.target.value)}/>
+        <input type="text" id="firstname" placeholder={randomUser.firstName}/>
+        <input type="text" id="lastname" placeholder={randomUser.lastName} />
         <input type="number" id="cardNr" placeholder="Card number" onChange={e => setCardnumber(e.target.value)}/>
         <select id="expireMonth" onChange={e => setExpireMonth(e.target.value)}>
           <option value="01">01</option>

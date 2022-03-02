@@ -2,10 +2,18 @@ import './App.css';
 import HomePage from "./pages/HomePage"
 import AddCard from "./pages/addCard.jsx"
 import { Routes, Route } from "react-router-dom"
+import {getRandomUserInfo} from "./redux/cardsSlice";
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 function App() {
-  console.log('App.jsx');
+  // console.log('App.jsx');
   // namn och efternamn kan hämtas här från cardSlice och skicka till AddCard
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRandomUserInfo());
+  }, []);
 
   return (
     <div className="App">
