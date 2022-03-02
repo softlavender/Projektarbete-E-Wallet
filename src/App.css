@@ -7,53 +7,78 @@
   grid-template: 100px 1fr auto / auto;
   grid-row-gap: 30px;
 }
-  .App-header {
-    background-color: #fff;
-  }
+.App-header {
+  background-color: #fff;
+}
 
-  .App-main {
-    justify-self: center;
-    min-width: 800px;
-    background-color: #fff;
-  }
-    #e-wallet {
-      padding: 25px;
-      border: 1px solid #4442;
-      border-radius: 5px;
-    }
-      #active-card {
-      }
+.App-main {
+  justify-self: center;
+  min-width: 800px;
+  background-color: #fff;
+}
+#e-wallet {
+  padding: 25px;
+  border: 1px solid #4442;
+  border-radius: 5px;
+}
+#active-card {
+}
 
-      #inactive-cards {
-      }
-        #active-card h1, #inactive-cards h1 {
-          font-weight: 400;
-          text-transform: capitalize;
-          text-align: center;
-        }
-        #active-card h1::after, #inactive-cards h1::after {
-          display: inline-block;
-          content: '';
-          margin-inline: 5px;
-          padding: 7px;
-          border-radius: 100%;
-          background-color: green;
-        }
-        #inactive-cards h1::after {
-          background-color: red;
-        }
+#inactive-cards {
+}
+#active-card h1,
+#inactive-cards h1 {
+  font-weight: 400;
+  text-transform: capitalize;
+  text-align: center;
+}
+#active-card h1::after,
+#inactive-cards h1::after {
+  display: inline-block;
+  content: "";
+  margin-inline: 5px;
+  padding: 7px;
+  border-radius: 100%;
+  background-color: green;
+}
+#inactive-cards h1::after {
+  background-color: red;
+}
 
-        /* exists in #active-card & #inactive-cards */
-        .card {
-          /* display: inline-block; */
-          width: 240px;
-          margin: auto;
-          padding: 15px;
-          border: 1px solid #444fff22;
-          border-radius: 25px;
-        }
+/* exists in #active-card & #inactive-cards */
+.card {
+  /* display: inline-block; */
+  width: 240px;
+  margin: auto;
+  padding: 15px;
+  border: 1px solid #444fff22;
+  border-radius: 25px;
+}
 
+#add-card {
+  border: 1px solid red;
+}
 
-      #add-card {
-        border: 1px solid red;
-      }
+.createCard {
+  width: 400px;
+  margin: auto;
+  padding: 15px;
+  border: 1px solid #444fff22;
+  border-radius: 25px;
+}
+
+.newCard {
+  width: 400px;
+  height: 200px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #444fff22;
+  background-color: rgb(91, 110, 160);
+  border-radius: 25px;
+}
+
+.addBtn {
+  margin-top: 20px;
+  
+}
