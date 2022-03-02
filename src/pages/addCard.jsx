@@ -1,9 +1,12 @@
 // imports
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 
 const AddCard = () => {
+  console.log('AddCard.jsx');
+
   // state
   let cardsData = useSelector((state) => {
     return state;
@@ -82,7 +85,10 @@ const AddCard = () => {
         </select>
         <button>Add Card</button>
       </div>
-      <button>Return to homepage</button>
+
+      <Link to='/'>
+        <button>Return to homepage</button>
+      </Link>
     </>
   );
 };
