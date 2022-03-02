@@ -2,11 +2,22 @@ import './App.css';
 import HomePage from "./pages/HomePage"
 import AddCard from "./pages/addCard.jsx"
 import { Routes, Route } from "react-router-dom"
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRandomUserInfo } from './redux/cardsSlice';
 
 function App() {
   console.log('App.jsx');
-  // namn och efternamn kan hämtas här från cardSlice och skicka till AddCard
+  const fetchStatus = useSelector(state => state.cards.status)
+  
+  const dispatch = useDispatch()
 
+  useEffect( _ => {
+    console.log('effect jsx app');
+    dispatch(getRandomUserInfo())
+  }, [])
+
+  console.log('app j s x');
   return (
     <div className="App">
       <header className="App-header">
@@ -15,10 +26,14 @@ function App() {
 
       
       <main className="App-main">
-        <Routes>
-          <Route exact path='/' element={<HomePage />}/>
-          <Route path='/addcard' element={<AddCard />}/>
-        </Routes>
+        {fetchStatus === 'Ok' ? 
+          (<Routes>
+            <Route exact path='/' element={<HomePage />}/>
+            <Route path='/addcard' element={<AddCard />}/>
+          </Routes>)
+          :
+          <p>{fetchStatus}</p>
+        }
       </main>
     </div>
   );

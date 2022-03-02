@@ -1,9 +1,12 @@
 // imports
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AddCard = () => {
+  console.log('AddCard.jsx');
+
   // state
   let cardsData = useSelector((state) => {
     return state;
@@ -134,7 +137,8 @@ const AddCard = () => {
           Add Card
         </button>
       </div>
-      <Link to={{ pathname: "/" }}>
+
+      <Link to='/'>
         <button>Return to homepage</button>
       </Link>
     </>
