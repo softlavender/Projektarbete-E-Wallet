@@ -1,6 +1,6 @@
 import './App.css';
 import HomePage from "./pages/HomePage"
-import AddCard from "./pages/AddCard.jsx"
+import AddCard from "./pages/addCard.jsx"
 import { Routes, Route } from "react-router-dom"
 
 function App() {
