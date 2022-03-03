@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
-import { Link } from "react-router-dom";
+import { Link ,useLocation } from "react-router-dom";
 import { changeName } from "../redux/cardsSlice";
 
 const HomePage = _ => {
   console.log('HomePage.jsx');
-  
+  // const locations = useLocation();
+  // console.log(locations);
     // omfattar alla existerande kort
   let cards = useSelector(state => {
     return state.cards.cards

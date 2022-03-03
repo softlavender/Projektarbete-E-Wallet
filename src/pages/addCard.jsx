@@ -1,10 +1,12 @@
 // imports
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 const AddCard = () => {
   console.log('AddCard.jsx');
+  const location = useLocation();
+  console.log(location);
 
   // state
   let cardsData = useSelector((state) => {
@@ -37,7 +39,7 @@ const AddCard = () => {
     <>
       <h1>add card</h1>
       <div className="newCard">
-        <p>{firstName} {lastName}</p>
+        <p>{location.state.firstname} {location.state.lastname}</p>
         <p>{cardnumber}</p>
         <p>{expireMonth} / {expireYear}</p>
         <p>{CCV}</p>
@@ -47,13 +49,13 @@ const AddCard = () => {
         <input
           type="text"
           id="firstname"
-          placeholder="Firstname"
+          placeholder={location.state.firstname}
           onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           type="text"
           id="lastname"
-          placeholder="Lastname"
+          placeholder={location.state.lastname}
           onChange={(e) => setLastName(e.target.value)}
         />
         <br />
