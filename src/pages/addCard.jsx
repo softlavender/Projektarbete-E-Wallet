@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const AddCard = () => {
   console.log('AddCard.jsx');
@@ -24,8 +23,8 @@ const AddCard = () => {
   const [CCV, setCCV] = useState("xxx");
 
   let newCard = {
-    firstname: firstName,
-    lastname: lastName,
+    firstName: randomUser.firstName,
+    lastName: randomUser.lastName,
     vendor: vendor,
     cardNr: cardnumber,
     expireMonth: expireMonth,
