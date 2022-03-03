@@ -1,12 +1,11 @@
 // imports
-import { Link , useLocation} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { updateCards } from "../redux/cardsSlice";
 
 const AddCard = () => {
   console.log('AddCard.jsx');
-  const location = useLocation();
-  console.log(location);
 
   // state
   let cardsData = useSelector((state) => {
@@ -39,7 +38,7 @@ const AddCard = () => {
     <>
       <h1>add card</h1>
       <div className="newCard">
-        <p>{location.state.firstname} {location.state.lastname}</p>
+        <p>{firstName} {lastName}</p>
         <p>{cardnumber}</p>
         <p>{expireMonth} / {expireYear}</p>
         <p>{CCV}</p>
@@ -49,13 +48,13 @@ const AddCard = () => {
         <input
           type="text"
           id="firstname"
-          placeholder={location.state.firstname}
+          placeholder="Firstname"
           onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           type="text"
           id="lastname"
-          placeholder={location.state.lastname}
+          placeholder="Lastname"
           onChange={(e) => setLastName(e.target.value)}
         />
         <br />
@@ -132,7 +131,7 @@ const AddCard = () => {
         <button className="addBtn"
           onClick={() => {
             console.log(newCard);
-            // dispatch(addNewCard(newCard))
+            dispatch(updateCards(newCard))
           }}
         >
           Add Card
