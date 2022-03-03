@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const getRandomUserInfo = createAsyncThunk("cards/getRandomUserInfo", async () => {
   let response = await fetch("https://randomuser.me/api/");
   let json = await response.json();
+  // console.log(json);
   return json;
 });
 
@@ -11,49 +12,45 @@ const cardsSlice = createSlice({
 
   // Initial state för random user
   initialState: {
-    randomUser: {
-      firstName: "",
-      lastName: ""
-    },
     cards: [
       {
-        randomUser: {
-          firstName: "",
-          lastName: "",
-        },
+        firstName: "",
+        lastName: "",
         vendor: "Visa",
         cardNr: "1233 4567 8912 0000",
         expireMonth: 4,
         expireYear: 2024,
         CCV: 123,
-      },
+        isActive: true
+      }
     ],
+
+    status: null
   },
 
   // reducers/actions
   reducers: {
-    changeName: (state, action) => {
+    updateCards: (state, action) => {
       state.cards.push(action.payload);
     },
   },
 
   extraReducers: {
-      [getRandomUserInfo.fulfilled]: (state, {payload}) => {
-        state.randomUser.firstName = payload.results[0].name.first.toUppercase();
-        state.cards[0].randomUser.firstName = payload.results[0].name.first.toUppercase();
-        state.randomUser.lastName = payload.results[0].name.last.toUppercase();
-        state.cards[0].randomUser.lastName = payload.results[0].name.last.toUppercase();
-      },
-      [getRandomUserInfo.pending]: (state) => {
-        state.status = "Fetching user... Please wait a moment.";
-      },
-      [getRandomUserInfo.rejected]: (state) => {
-        state.status = "Failed to fetch user.";
-      },
+    [getRandomUserInfo.fulfilled]: (state, {payload}) => {
+      state.cards[0].firstName = payload.results[0].name.first
+      state.cards[0].lastName = payload.results[0].name.last
+      state.status = 'Ok';
+    },
+    [getRandomUserInfo.pending]: (state) => {
+      state.status = "Fetching random user data... Please wait a moment.";
+    },
+    [getRandomUserInfo.rejected]: (state) => {
+      state.status = "Failed to fetch random user data.";
+    },
   },
 });
 
-export const { changeName } = cardsSlice.actions;
+export const { updateCards } = cardsSlice.actions;
 export default cardsSlice.reducer;
 
 // /* Alternativet med (redux-toolkit) */
