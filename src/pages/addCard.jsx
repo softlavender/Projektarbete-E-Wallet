@@ -23,8 +23,8 @@ const AddCard = () => {
   const [CCV, setCCV] = useState("xxx");
 
   let newCard = {
-    firstName: randomUser.firstName,
-    lastName: randomUser.lastName,
+    firstName: firstName,
+    lastName: lastName,
     vendor: vendor,
     cardNr: cardnumber,
     expireMonth: expireMonth,
