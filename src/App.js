@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRandomUserInfo } from './redux/cardsSlice';
 
+// inputs från addcard ska in i arrayn. Dispatchs
+
 function App() {
   console.log('App.jsx');
   const fetchStatus = useSelector(state => state.cards.status)
