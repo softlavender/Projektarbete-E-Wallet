@@ -7,78 +7,108 @@
   grid-template: 100px 1fr auto / auto;
   grid-row-gap: 30px;
 }
-.App-header {
-  background-color: #fff;
-}
+  .App-header {
+    background-color: #fff;
+  }
 
-.App-main {
-  justify-self: center;
-  min-width: 800px;
-  background-color: #fff;
-}
-#e-wallet {
-  padding: 25px;
-  border: 1px solid #4442;
-  border-radius: 5px;
-}
-#active-card {
-}
+  .App-main {
+    justify-self: center;
+    min-width: 800px;
+    background-color: #fff;
+  }
+    #e-wallet {
+      padding: 25px;
+      border: 1px solid #4442;
+      border-radius: 5px;
 
-#inactive-cards {
-}
-#active-card h1,
-#inactive-cards h1 {
-  font-weight: 400;
-  text-transform: capitalize;
-  text-align: center;
-}
-#active-card h1::after,
-#inactive-cards h1::after {
-  display: inline-block;
-  content: "";
-  margin-inline: 5px;
-  padding: 7px;
-  border-radius: 100%;
-  background-color: green;
-}
-#inactive-cards h1::after {
-  background-color: red;
-}
+      display: grid;
+      grid-row-gap: 50px;
+    }
+      #active-card {
+      }
 
-/* exists in #active-card & #inactive-cards */
-.card {
-  /* display: inline-block; */
-  width: 240px;
-  margin: auto;
-  padding: 15px;
-  border: 1px solid #444fff22;
-  border-radius: 25px;
-}
+      #add-new-card {
+        justify-self: end;
+      }
+        #add-card, .addBtn {
+          border: none;
+          padding: 10px;
+          border-radius: 10px;
+          font-size: .9rem;
+          font-weight: bold;
+          text-transform: capitalize;
+          color: white;
+          /* background-image: linear-gradient(to right, #823bd7ab, #3fd8e8); */
+          background-color: #ff7b59;
+          background-color: #5b5bab;
+          box-shadow: 0px 2px 4px 0px #444b;
+          transition: .2s;
+        }
+          #add-card:hover, .addBtn:hover {
+            background-color: #e86c54;
+            background-color: #4e4e91;
+          }
+        #add-card-notice span {
+          /* background-image: linear-gradient(to right, #543bd7, #9e54d8); */
+          padding: 5px;
+          border-radius: 8px;
+          font-size: .8rem;
+          font-weight: bold;
+          text-transform: capitalize;
+          color: white;
+          background-color: #5b5bab;
+        }
 
-#add-card {
-  border: 1px solid red;
-}
+      #inactive-cards {
+      }
 
-.createCard {
-  width: 400px;
-  margin: auto;
-  padding: 15px;
-  border: 1px solid #444fff22;
-  border-radius: 25px;
-}
+      #active-card h1,
+      #inactive-cards h1 {
+        font-weight: 400;
+        text-transform: capitalize;
+        text-align: center;
+      }
+      #active-card h1::after,
+      #inactive-cards h1::after {
+        display: inline-block;
+        content: "";
+        margin-inline: 5px;
+        padding: 7px;
+        border-radius: 100%;
+        background-color: green;
+      }
+      #inactive-cards h1::after {
+        background-color: red;
+      }
 
-.newCard {
-  width: 400px;
-  height: 200px;
-  margin: auto;
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #444fff22;
-  background-color: rgb(91, 110, 160);
-  border-radius: 25px;
-}
+      /* exists in #active-card & #inactive-cards */
+      .card {
+        /* display: inline-block; */
+        width: 240px;
+        margin: auto;
+        padding: 15px;
+        border: 1px solid #444fff22;
+        border-radius: 25px;
+      }
+      .createCard {
+        width: 400px;
+        margin: auto;
+        padding: 15px;
+        border: 1px solid #444fff22;
+        border-radius: 25px;
+      }
 
-.addBtn {
-  margin-top: 20px;
-  
-}
+      .newCard {
+        width: 400px;
+        height: 200px;
+        margin: auto;
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #444fff22;
+        background-color: rgb(91, 110, 160);
+        border-radius: 25px;
+      }
+
+      .addBtn {
+        margin-top: 20px;
+      }

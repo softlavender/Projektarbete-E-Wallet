@@ -5,17 +5,14 @@ import { changeName } from "../redux/cardsSlice";
 
 const HomePage = _ => {
   console.log('HomePage.jsx');
-  // const locations = useLocation();
-  // console.log(locations);
+  
     // omfattar alla existerande kort
   let cards = useSelector(state => {
     return state.cards.cards
   })
-  
+
   // data bara för det aktiva kortet
   let {firstName, lastName, vendor, cardNr, expireMonth, expireYear, CCV} = useSelector(state => {
-    // första lösning med "state.cards.cards[0]" kommer att skapa problem för oss ifall den aktiva kortet inte är på plats 0 i cards arrayen
-    // return state.cards.cards[0]
     return state.cards.cards[cards.indexOf(cards.find(card => card.isActive))]
   })
   
@@ -24,7 +21,7 @@ const HomePage = _ => {
 
   // aktivera ett annat kort
   const changeCardStatus = (isActive) => {
-    console.log(isActive);
+    console.log(' isActive', isActive);
     // får toggla runt lite mellan objektens isActive state här och skicka med i funktionen som dispatchas när den finns
   }
 
@@ -42,11 +39,20 @@ const HomePage = _ => {
           <p>CCV: {CCV}</p>
         </div>
       </section>
-
+    
+    <section id="add-new-card">
+      {cards.length < 4 
+        ? <Link to='/addcard' state={{firstname: firstName, lastname: lastName}}>
+            <button id="add-card">add new card</button>
+          </Link>
+        : <span id="add-card-notice">Delete one inactive card to <span>add new card</span></span>
+      }
+    </section>
 
       <section id="inactive-cards">
         <h1>Inactive Cards</h1>
         {cards.filter(card => !card.isActive).map((card, i) => {
+          console.log(cards.indexOf(card));
           return (
             <div key={i} className="card" onClick={ () => changeCardStatus(card.isActive)}>
               <p>firstName: {card.firstName}</p>
@@ -60,10 +66,6 @@ const HomePage = _ => {
           )
         })}
       </section>
-
-      <Link to='/addcard' state={{firstname: firstName, lastname: lastName}}>
-        <button id="add-card">add new card</button>
-      </Link>
     </div>
   )
 }
