@@ -16,9 +16,13 @@ const AddCard = () => {
   const [expireYear, setExpireYear] = useState("xxxx");
   const [CCV, setCCV] = useState("xxx");
 
+  
+  let firstname = location.state.firstname.toUpperCase();
+  let lastname = location.state.lastname.toUpperCase();
+
   let newCard = {
-    firstName: location.state.firstname,
-    lastName: location.state.lastname,
+    firstName: firstname,
+    lastName: lastname,
     vendor: vendor,
     cardNr: cardnumber,
     expireMonth: expireMonth,
@@ -32,7 +36,7 @@ const AddCard = () => {
       <h1>add card</h1>
       <div className="newCard">
         <p>
-          {location.state.firstname} {location.state.lastname}
+          {firstname} {lastname}
         </p>
         <p>{cardnumber}</p>
         <p>
@@ -45,21 +49,25 @@ const AddCard = () => {
         <input
           type="text"
           id="firstname"
-          placeholder={location.state.firstname}
+          placeholder={firstname}
           disabled
         />
         <input
           type="text"
           id="lastname"
           disabled
-          placeholder={location.state.lastname}
+          placeholder={lastname}
         />
         <br />
         <input
           type="number"
           id="cardNr"
           placeholder="Card number"
-          onChange={(e) => setCardnumber(e.target.value)}
+          onChange={(e) =>
+            e.target.value !== ""
+              ? setCardnumber(e.target.value)
+              : setCardnumber("xxxx xxxx xxxx xxxx")
+          }
           onClick={() => {
             let checkCardNr = document.querySelector("#cardNr");
 
@@ -116,7 +124,10 @@ const AddCard = () => {
           type="number"
           id="CCV"
           placeholder="CCV"
-          onChange={(e) => setCCV(e.target.value)}
+          onChange={(e) =>
+            e.target.value !== "" ? setCCV(e.target.value) : setCCV("xxx")
+          }
+
           onClick={() => {
             let checkCCV = document.querySelector("#CCV");
 
