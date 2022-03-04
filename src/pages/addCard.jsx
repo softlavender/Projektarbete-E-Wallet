@@ -27,14 +27,6 @@ const AddCard = () => {
     isActive: false,
   };
 
-  let myCCV = document.querySelector("#CCV");
-
-  myCCV.oninput = function () {
-    if (this.value.length > 3) {
-      this.value = this.value.slice(0, 3);
-    }
-  };
-
   return (
     <>
       <h1>add card</h1>
@@ -64,11 +56,19 @@ const AddCard = () => {
         />
         <br />
         <input
-          type="tel"
+          type="number"
           id="cardNr"
           placeholder="Card number"
-          maxLength={16}
           onChange={(e) => setCardnumber(e.target.value)}
+          onClick={() => {
+            let checkCardNr = document.querySelector("#cardNr");
+
+            checkCardNr.oninput = function () {
+              if (this.value.length > 16) {
+                this.value = this.value.slice(0, 16);
+              }
+            };
+          }}
         />
         <br />
         <select
@@ -117,6 +117,15 @@ const AddCard = () => {
           id="CCV"
           placeholder="CCV"
           onChange={(e) => setCCV(e.target.value)}
+          onClick={() => {
+            let checkCCV = document.querySelector("#CCV");
+
+            checkCCV.oninput = function () {
+              if (this.value.length > 3) {
+                this.value = this.value.slice(0, 3);
+              }
+            };
+          }}
         />
         <br />
         <select
