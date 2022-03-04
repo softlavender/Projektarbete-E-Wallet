@@ -33,6 +33,9 @@ const cardsSlice = createSlice({
     updateCards: (state, action) => {
       state.cards.push(action.payload);
     },
+    removeCard: (state, action) => {
+      state.cards.splice(action.payload, 1);
+    }
   },
 
   extraReducers: {
@@ -50,7 +53,7 @@ const cardsSlice = createSlice({
   },
 });
 
-export const { updateCards } = cardsSlice.actions;
+export const { updateCards, removeCard } = cardsSlice.actions;
 export default cardsSlice.reducer;
 
 // /* Alternativet med (redux-toolkit) */
