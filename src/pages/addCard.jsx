@@ -1,22 +1,15 @@
 // imports
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { updateCards } from "../redux/cardsSlice";
 
 const AddCard = () => {
-  console.log('AddCard.jsx');
-
-  // state
-  let cardsData = useSelector((state) => {
-    return state;
-  });
+  const location = useLocation();
 
   // state/effects, actions
   const dispatch = useDispatch();
 
-  const [firstName, setFirstName] = useState("Firstname");
-  const [lastName, setLastName] = useState("Lastname");
   const [vendor, setVendor] = useState("Vendor");
   const [cardnumber, setCardnumber] = useState("xxxx xxxx xxxx xxxx");
   const [expireMonth, setExpireMonth] = useState("xx");
@@ -24,38 +17,50 @@ const AddCard = () => {
   const [CCV, setCCV] = useState("xxx");
 
   let newCard = {
-    firstName: firstName,
-    lastName: lastName,
+    firstName: location.state.firstname,
+    lastName: location.state.lastname,
     vendor: vendor,
     cardNr: cardnumber,
     expireMonth: expireMonth,
     expireYear: expireYear,
     CCV: CCV,
-    isActive: false
+    isActive: false,
+  };
+
+  let myCCV = document.querySelector("#CCV");
+
+  myCCV.oninput = function () {
+    if (this.value.length > 3) {
+      this.value = this.value.slice(0, 3);
+    }
   };
 
   return (
     <>
       <h1>add card</h1>
       <div className="newCard">
-        <p>{firstName} {lastName}</p>
+        <p>
+          {location.state.firstname} {location.state.lastname}
+        </p>
         <p>{cardnumber}</p>
-        <p>{expireMonth} / {expireYear}</p>
+        <p>
+          {expireMonth} / {expireYear}
+        </p>
         <p>{CCV}</p>
         <p>{vendor}</p>
       </div>
-      <div className="createCard">
+      <form className="createCard">
         <input
           type="text"
           id="firstname"
-          placeholder="Firstname"
-          onChange={(e) => setFirstName(e.target.value)}
+          placeholder={location.state.firstname}
+          disabled
         />
         <input
           type="text"
           id="lastname"
-          placeholder="Lastname"
-          onChange={(e) => setLastName(e.target.value)}
+          disabled
+          placeholder={location.state.lastname}
         />
         <br />
         <input
@@ -108,10 +113,9 @@ const AddCard = () => {
           <option value="2032">2032</option>
         </select>
         <input
-          type="tel"
+          type="number"
           id="CCV"
           placeholder="CCV"
-          maxLength={3}
           onChange={(e) => setCCV(e.target.value)}
         />
         <br />
@@ -128,17 +132,19 @@ const AddCard = () => {
           <option value="American Expess">American Expess</option>
         </select>
         <br />
-        <button className="addBtn"
-          onClick={() => {
-            console.log(newCard);
-            dispatch(updateCards(newCard))
-          }}
-        >
-          Add Card
-        </button>
-      </div>
+        <Link to="/">
+          <button
+            className="addBtn"
+            onClick={() => {
+              dispatch(updateCards(newCard));
+            }}
+          >
+            Add Card
+          </button>
+        </Link>
+      </form>
 
-      <Link to='/'>
+      <Link to="/">
         <button>Return to homepage</button>
       </Link>
     </>
@@ -146,52 +152,3 @@ const AddCard = () => {
 };
 
 export default AddCard;
-
-// Lägg till nytt kort
-
-// Vendor
-// Förnamn
-// Efternamn
-// Kortnummer
-// Expire month
-// Expire year
-// CCV
-
-// Tre alternativ på kort
-
-// Förhandsvisning på kort som uppdateras
-
-// // set state
-// let dispatch = useDispatch()
-// // alvernativ 1: kan skicka med event och lösa ut all data genom event.target > hitta de olika kortfält
-// // alvernativ 2: kan hitta alla existerand DOM-element relaterat till kortfält  och lösa ut datan som matades in
-// const addNewCardd = (e) => {
-//   // alt 1
-//   let firstname = document.querySelector('#firstname').value
-//   let lastname = document.querySelector('#lastname').value
-//   let vendor = document.querySelector('#vendor').value
-//   let cardNr = document.querySelector('#cardNr').value
-//   let expireMonth = document.querySelector('#expireMonth').value
-//   let expireYear = document.querySelector('#expireYear').value
-//   let CCV = document.querySelector('#CCV').value
-
-//   let newCard = {
-//     firstname: firstname,
-//     lastname: lastname
-//     // ....
-//   }
-
-//   // alt 2
-//   let firstname = e.target.children[0].value
-//   let lastname = e.target.children[1].value
-//   let vendor = e.target.children[2].value
-
-//   let newCard = {
-//     firstname: firstname,
-//     lastname: lastname,
-//     vendor: vendor
-//     // ....
-//   }
-
-//   dispatch(addNewCard(newCard))
-// }
