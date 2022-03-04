@@ -15,6 +15,9 @@ const HomePage = _ => {
   let {firstName, lastName, vendor, cardNr, expireMonth, expireYear, CCV} = useSelector(state => {
     return state.cards.cards[cards.indexOf(cards.find(card => card.isActive))]
   })
+
+  let firstname = firstName.toUpperCase()
+  let lastname = lastName.toUpperCase()
   
   // state/effects, actions
   const dispatch = useDispatch()
@@ -37,8 +40,8 @@ const HomePage = _ => {
       <section id="active-card">
         <h1>Active Card</h1>
         <div className="card">
-          <p>firstName: {firstName}</p>
-          <p>lastName: {lastName}</p>
+          <p>firstName: {firstname}</p>
+          <p>lastName: {lastname}</p>
           <p>vendor: {vendor}</p>
           <p>cardNr: {cardNr}</p>
           <p>expireMonth: {expireMonth}</p>
