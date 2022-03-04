@@ -13,12 +13,13 @@
 
   .App-main {
     justify-self: center;
-    min-width: 800px;
+    min-width: 1000px;
+    border: 1px solid #4442;
     background-color: #fff;
   }
     #e-wallet {
       padding: 25px;
-      border: 1px solid #4442;
+      /* border: 1px solid #4442; */
       border-radius: 5px;
 
       display: grid;
@@ -27,10 +28,20 @@
       #active-card {
       }
 
+        /* exists in #active-card & #inactive-cards */
+        .card {
+          /* display: inline-block; */
+          width: 240px;
+          margin: auto;
+          padding: 15px;
+          border: 1px solid #444fff22;
+          border-radius: 25px;
+        }
+
       #add-new-card {
         justify-self: end;
       }
-        #add-card, .addBtn {
+        #add-card, .addBtn, .delete-card {
           border: none;
           padding: 10px;
           border-radius: 10px;
@@ -60,7 +71,22 @@
         }
 
       #inactive-cards {
+        justify-self: center;
       }
+        /* exists in #active-card & #inactive-cards */
+        #inactive-cards .card {
+          display: inline-block;
+          margin: 0 5px;
+        }
+          .delete-card {
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: unset;
+            text-transform: unset;
+            color: #d1e257;
+            background-color: #528ca8;
+            box-shadow: none;
+          }
 
       #active-card h1,
       #inactive-cards h1 {
@@ -81,15 +107,7 @@
         background-color: red;
       }
 
-      /* exists in #active-card & #inactive-cards */
-      .card {
-        /* display: inline-block; */
-        width: 240px;
-        margin: auto;
-        padding: 15px;
-        border: 1px solid #444fff22;
-        border-radius: 25px;
-      }
+      
       .createCard {
         width: 400px;
         margin: auto;

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { Link ,useLocation } from "react-router-dom";
-import { changeName } from "../redux/cardsSlice";
+import { changeName, removeCard } from "../redux/cardsSlice";
 
 const HomePage = _ => {
   console.log('HomePage.jsx');
@@ -23,6 +23,13 @@ const HomePage = _ => {
   const changeCardStatus = (isActive) => {
     console.log(' isActive', isActive);
     // får toggla runt lite mellan objektens isActive state här och skicka med i funktionen som dispatchas när den finns
+  }
+
+  const deleteWantedCard = wantedCard => {
+    console.log('wantedCard', wantedCard);
+    // const cardIndx = cards.indexOf(wantedCard)
+    dispatch(removeCard(cards.indexOf(wantedCard)))
+    console.log('cards.indexOf(wantedCard)', cards.indexOf(wantedCard));
   }
 
   return (
@@ -62,6 +69,7 @@ const HomePage = _ => {
               <p>expireMonth: {card.expireMonth}</p>
               <p>expireYear: {card.expireYear}</p>
               <p>CCV: {card.CCV}</p>
+              <button className="delete-card" onClick={_ => deleteWantedCard(card)}>delete</button>
             </div>
           )
         })}
