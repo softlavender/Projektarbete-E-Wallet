@@ -15,18 +15,15 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect( _ => {
-    console.log('effect jsx app');
     dispatch(getRandomUserInfo())
   }, [])
 
-  console.log('app j s x');
   return (
     <div className="App">
       <header className="App-header">
       <h1>Projektarbete - E-wallet</h1>
       </header>
 
-      
       <main className="App-main">
         {fetchStatus === 'Ok' ? 
           (<Routes>
