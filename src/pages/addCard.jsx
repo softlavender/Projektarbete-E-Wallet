@@ -1,5 +1,5 @@
 // imports
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { updateCards } from "../redux/cardsSlice";
@@ -9,6 +9,7 @@ const AddCard = () => {
 
   // state/effects, actions
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const [vendor, setVendor] = useState("Vendor");
   const [cardnumber, setCardnumber] = useState("xxxx xxxx xxxx xxxx");
@@ -16,7 +17,6 @@ const AddCard = () => {
   const [expireYear, setExpireYear] = useState("xxxx");
   const [CCV, setCCV] = useState("xxx");
 
-  
   let firstname = location.state.firstname.toUpperCase();
   let lastname = location.state.lastname.toUpperCase();
 
@@ -45,19 +45,9 @@ const AddCard = () => {
         <p>{CCV}</p>
         <p>{vendor}</p>
       </div>
-      <form className="createCard">
-        <input
-          type="text"
-          id="firstname"
-          placeholder={firstname}
-          disabled
-        />
-        <input
-          type="text"
-          id="lastname"
-          disabled
-          placeholder={lastname}
-        />
+      <div className="createCard">
+        <input type="text" id="firstname" placeholder={firstname} disabled />
+        <input type="text" id="lastname" disabled placeholder={lastname} />
         <br />
         <input
           type="number"
@@ -127,7 +117,6 @@ const AddCard = () => {
           onChange={(e) =>
             e.target.value !== "" ? setCCV(e.target.value) : setCCV("xxx")
           }
-
           onClick={() => {
             let checkCCV = document.querySelector("#CCV");
 
@@ -152,17 +141,27 @@ const AddCard = () => {
           <option value="American Expess">American Expess</option>
         </select>
         <br />
-        <Link to="/">
+        
           <button
             className="addBtn"
             onClick={() => {
-              dispatch(updateCards(newCard));
+              if (
+                cardnumber.length === 16 &&
+                CCV.length === 3 &&
+                vendor !== "Vendor" &&
+                expireMonth !== "xx" &&
+                expireYear !== "xxxx"
+              ) {
+                dispatch(updateCards(newCard));
+                return navigate("/");
+              } else {
+                alert("please make sure all fields are filled in correctly")
+              }
             }}
           >
             Add Card
           </button>
-        </Link>
-      </form>
+      </div>
 
       <Link to="/">
         <button>Return to homepage</button>
