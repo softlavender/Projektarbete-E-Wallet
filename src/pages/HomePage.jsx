@@ -29,53 +29,54 @@ const HomePage = _ => {
   }
 
   const deleteWantedCard = wantedCard => {
-    console.log('wantedCard', wantedCard);
-    // const cardIndx = cards.indexOf(wantedCard)
     dispatch(removeCard(cards.indexOf(wantedCard)))
-    console.log('cards.indexOf(wantedCard)', cards.indexOf(wantedCard));
   }
 
+  
   return (
     <div id="e-wallet">
       <section id="active-card">
-        <h1>Active Card</h1>
+        {/* <h1>Active Card</h1> */}
         <div className="card">
-          <p>firstName: {firstname}</p>
-          <p>lastName: {lastname}</p>
-          <p>vendor: {vendor}</p>
-          <p>cardNr: {cardNr}</p>
-          <p>expireMonth: {expireMonth}</p>
-          <p>expireYear: {expireYear}</p>
-          <p>CCV: {CCV}</p>
+          <span className="chip"></span>
+          <span className="vendor">{vendor}</span>
+          <span className="fullname">{firstname} {lastname}</span>
+          <span className="card-number">{cardNr}</span>
+          <span className="valid-thru">{expireMonth}/{expireYear}</span>
+          {/* <p className="CCV">CCV: {CCV}</p> */}
         </div>
       </section>
-    
-    <section id="add-new-card">
-      {cards.length < 4 
-        ? <Link to='/addcard' state={{firstname: firstName, lastname: lastName}}>
-            <button id="add-card">add new card</button>
-          </Link>
-        : <span id="add-card-notice">Delete one inactive card to <span>add new card</span></span>
-      }
-    </section>
 
-      <section id="inactive-cards">
-        <h1>Inactive Cards</h1>
-        {cards.filter(card => !card.isActive).map((card, i) => {
-          console.log(cards.indexOf(card));
-          return (
-            <div key={i} className="card" onClick={ () => changeCardStatus(card.isActive)}>
-              <p>firstName: {card.firstName}</p>
-              <p>lastName: {card.lastName}</p>
-              <p>vendor: {card.vendor}</p>
-              <p>cardNr: {card.cardNr}</p>
-              <p>expireMonth: {card.expireMonth}</p>
-              <p>expireYear: {card.expireYear}</p>
-              <p>CCV: {card.CCV}</p>
-              <button className="delete-card" onClick={_ => deleteWantedCard(card)}>delete</button>
-            </div>
-          )
-        })}
+      {cards.length > 1 &&
+        <section id="inactive-cards">
+          {/* <h1>Inactive Cards</h1> */}
+          {cards.filter(card => !card.isActive).map((card, i) => {
+            return (
+              <div className="inactive-card" key={i}>
+                <div className="card">
+                  <span className="chip"></span>
+                  <span className="vendor">{card.vendor}</span>
+                  <span className="fullname">{card.firstname} {lastname}</span>
+                  <span className="card-number">{card.cardNr}</span>
+                  <span className="valid-thru">{card.expireMonth}/{expireYear}</span>
+                  {/* <p className="CCV">CCV: {CCV}</p> */}  
+                </div>
+
+                <button className="activate-card" onClick={_ => changeCardStatus(card.isActive)}>activate</button>
+                <button className="delete-card" onClick={_ => deleteWantedCard(card)}>delete</button>
+              </div>
+            )
+          })}
+        </section>
+      }
+
+      <section id="add-new-card">
+        {cards.length < 4 
+          ? <Link to='/addcard' state={{firstname: firstName, lastname: lastName}}>
+              <button id="add-card">add new card</button>
+            </Link>
+          : <span id="add-card-notice">Delete one inactive card to <span>add new card</span></span>
+        }
       </section>
     </div>
   )
