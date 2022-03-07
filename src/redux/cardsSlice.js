@@ -3,7 +3,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const getRandomUserInfo = createAsyncThunk("cards/getRandomUserInfo", async () => {
   let response = await fetch("https://randomuser.me/api/");
   let json = await response.json();
-  // console.log(json);
   return json;
 });
 
@@ -55,30 +54,3 @@ const cardsSlice = createSlice({
 
 export const { updateCards, removeCard } = cardsSlice.actions;
 export default cardsSlice.reducer;
-
-// /* Alternativet med (redux-toolkit) */
-// import {createSlice} from '@reduxjs/toolkit'
-
-// // createSlice är ett objekt innehåller actions, state + reducer
-// const headerSlice = createSlice({
-//   // slice name
-//   name: 'header',
-
-//   // state
-//   initialState: {
-//     name: 'Todo'
-//   },
-
-//   // action reducer
-//   reducers: {
-//     newName: (state, action) => {
-//       // console.log(action);
-//       state.name = action.payload
-//     }
-//   }
-// })
-
-// export const {newName} = headerSlice.actions
-// export default headerSlice.reducer
-
-// https://codesandbox.io/s/redux-toolkit-api-todolist-pegrd?file=/src/redux/todoListSlice.js:0-998
