@@ -29,14 +29,10 @@ function App() {
       </header>
 
       <main className="App-main">
-        {fetchStatus === 'Ok' ? 
-          (<Routes>
+        <Routes>
             <Route exact path='/' element={<HomePage />}/>
             <Route path='/addcard' element={<AddCard />}/>
-          </Routes>)
-          :
-          <p>{fetchStatus}</p>
-        }
+          </Routes>
       </main>
     </div>
   );

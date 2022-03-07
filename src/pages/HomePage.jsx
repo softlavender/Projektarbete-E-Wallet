@@ -42,7 +42,7 @@ const HomePage = _ => {
           <span className="vendor">{vendor}</span>
           <span className="fullname">{firstname} {lastname}</span>
           <span className="card-number">{cardNr}</span>
-          <span className="valid-thru">{expireMonth}/{expireYear}</span>
+          <span className="valid-thru">{expireMonth} / {expireYear}</span>
           {/* <p className="CCV">CCV: {CCV}</p> */}
         </div>
       </section>
@@ -51,14 +51,15 @@ const HomePage = _ => {
         <section id="inactive-cards">
           {/* <h1>Inactive Cards</h1> */}
           {cards.filter(card => !card.isActive).map((card, i) => {
+            console.log(card);
             return (
               <div className="inactive-card" key={i}>
                 <div className="card">
                   <span className="chip"></span>
                   <span className="vendor">{card.vendor}</span>
-                  <span className="fullname">{card.firstname} {lastname}</span>
+                  <span className="fullname">{card.firstName} {card.lastName}</span>
                   <span className="card-number">{card.cardNr}</span>
-                  <span className="valid-thru">{card.expireMonth}/{expireYear}</span>
+                  <span className="valid-thru">{card.expireMonth} / {card.expireYear}</span>
                   {/* <p className="CCV">CCV: {CCV}</p> */}  
                 </div>
 
