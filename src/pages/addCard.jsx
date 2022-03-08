@@ -34,13 +34,13 @@ const AddCard = () => {
   return (
     <>
     <div id="add-new-card-area">
-      <div className="card">
+      <div className={`card ${vendor}`}>
         <span className="chip"></span>
         <span className="vendor">{vendor}</span>
         <span className="fullname">{firstname} {lastname}</span>
         <span className="card-number">{cardnumber}</span>
         <span className="valid-thru">{expireMonth} / {expireYear}</span>
-        {/* <p className="CCV">CCV: {CCV}</p> */}
+        <p className="CCV">CCV: {CCV}</p>
       </div>
 
       <div className="create-card">
@@ -54,9 +54,10 @@ const AddCard = () => {
           onChange={(e) => setVendor(e.target.value)}
         >
           <option value="disabled" disabled>Choose a vendor</option>
-          <option value="Mastercard">Mastercard</option>
-          <option value="Visa">Visa</option>
-          <option value="American Expess">American Expess</option>
+          <option value="ceb">CEB</option>
+          <option value="moment">Moment</option>
+          <option value="torkel-express">Torkel Express</option>
+          <option value="john-wick-bank">John Wick Bank</option>
         </select>
 
         <div id="valid-thru">

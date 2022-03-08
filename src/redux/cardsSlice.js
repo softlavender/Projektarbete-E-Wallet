@@ -15,7 +15,7 @@ const cardsSlice = createSlice({
       {
         firstName: "",
         lastName: "",
-        vendor: "Visa",
+        vendor: "torkel-express",
         cardNr: "1233 4567 8912 0000",
         expireMonth: 4,
         expireYear: 2024,
@@ -30,10 +30,30 @@ const cardsSlice = createSlice({
   // reducers/actions
   reducers: {
     updateCards: (state, action) => {
-      state.cards.push(action.payload);
+      state.cards.find(card => {
+        if(card.cardNr === action.payload.cardNr) {
+          alert("It's not recommended to have two cards with the same cardnumber")
+          return
+        } else {
+          state.cards.push(action.payload);
+        }
+      })
     },
     removeCard: (state, action) => {
       state.cards.splice(action.payload, 1);
+    },
+    changeCardStatus: (state, {type, payload}) => {
+      state.cards.map( card => {
+        if (card.cardNr === payload[0].cardNr) {
+          card.isActive = !card.isActive
+        }
+      })
+
+      state.cards.map( card => {
+        if (card.cardNr === payload[1].cardNr) {
+          card.isActive = !card.isActive
+        }
+      })
     }
   },
 
@@ -52,5 +72,5 @@ const cardsSlice = createSlice({
   },
 });
 
-export const { updateCards, removeCard } = cardsSlice.actions;
+export const { updateCards, removeCard, changeCardStatus } = cardsSlice.actions;
 export default cardsSlice.reducer;
