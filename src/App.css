@@ -131,26 +131,6 @@
               border: 1px solid #f0f8;
             }
 
-      /* style for commented out headers #active-card, #inactive-cards */
-      /* #active-card h1,
-      #inactive-cards h1 {
-        font-weight: 400;
-        text-transform: capitalize;
-        text-align: center;
-      }
-      #active-card h1::after,
-      #inactive-cards h1::after {
-        display: inline-block;
-        content: "";
-        margin-inline: 5px;
-        padding: 7px;
-        border-radius: 100%;
-        background-color: green;
-      }
-      #inactive-cards h1::after {
-        background-color: red;
-      } */
-
 
       #add-new-card {
         grid-area: 3 / 1 / 4 / 2;
@@ -266,3 +246,36 @@
   button {
     cursor: pointer;
   }
+
+
+
+
+  .card {
+    height: 180px;
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    background-color: black;
+    background-image: linear-gradient(#000, #5b5babdd);
+    box-shadow: 0px 2px 3px 1px #0003;
+    color: white;
+    font-size: 1rem;
+    font-weight: 100;
+    text-shadow: 0 2px 1px #000;
+
+    display: grid;
+    grid-template: 28px 65px 40px auto / auto 1fr;
+  }
+    .torkel-express {
+      background-image: linear-gradient(#000, #0f0);
+    }
+    .ceb {
+      background-image: linear-gradient(rgb(168, 209, 224), rgb(206, 135, 185));
+    }
+    .john-wick-bank {
+      background-image: linear-gradient(#000, #00f);
+    }
+    .moment {
+      background-image: linear-gradient(#000, #faa);
+    }
