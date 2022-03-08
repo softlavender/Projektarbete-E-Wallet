@@ -35,12 +35,13 @@ const AddCard = () => {
     <>
     <div id="add-new-card-area">
       <div className={`card ${vendor}`}>
-        <span className="chip"></span>
+        <span className="chip">
+          <span className="CCV">{CCV}</span>
+        </span>
         <span className="vendor">{vendor}</span>
         <span className="fullname">{firstname} {lastname}</span>
         <span className="card-number">{cardnumber}</span>
         <span className="valid-thru">{expireMonth} / {expireYear}</span>
-        <p className="CCV">CCV: {CCV}</p>
       </div>
 
       <div className="create-card">

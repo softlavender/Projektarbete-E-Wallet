@@ -3,7 +3,6 @@ import { Link  } from "react-router-dom";
 import { removeCard, changeCardStatus } from "../redux/cardsSlice";
 
 const HomePage = _ => {
-  
     // omfattar alla existerande kort
   let cards = useSelector(state => {
     return state.cards.cards
@@ -33,12 +32,13 @@ const HomePage = _ => {
     <div id="e-wallet">
       <section id="active-card">
         <div className={`card ${vendor}`}>
-          <span className="chip"></span>
+          <span className="chip">
+            <span className="CCV">{CCV}</span>
+          </span>
           <span className="vendor">{vendor}</span>
           <span className="fullname">{firstname} {lastname}</span>
           <span className="card-number">{cardNr}</span>
           <span className="valid-thru">{expireMonth} / {expireYear}</span>
-          {/* <p className="CCV">CCV: {CCV}</p> */}
         </div>
       </section>
 
@@ -48,12 +48,13 @@ const HomePage = _ => {
             return (
               <div className="inactive-card" key={card.cardNr}>
                 <div className={`card ${card.vendor}`}>
-                  <span className="chip"></span>
+                  <span className="chip">
+                    <span className="CCV">{card.CCV}</span>
+                  </span>
                   <span className="vendor">{card.vendor}</span>
                   <span className="fullname">{card.firstName} {card.lastName}</span>
                   <span className="card-number">{card.cardNr}</span>
                   <span className="valid-thru">{card.expireMonth} / {card.expireYear}</span>
-                  {/* <p className="CCV">CCV: {CCV}</p> */}
                 </div>
 
                 <button className="activate-card" onClick={_ => dispatch(changeCardStatus([card, activeCard]))}>activate</button>
