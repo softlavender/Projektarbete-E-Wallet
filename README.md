@@ -1,5 +1,6 @@
 # Projektarbete - E-wallet
 
+![e-wallet-working](https://user-images.githubusercontent.com/33270258/157298561-650ff8b1-8839-4ebd-8598-c6e0ab042390.PNG)
 
 
 Beskrivning: Du ska skapa en applikation där användaren kan hantera olika betalkort. Användaren ska kunna ha upp till max 4 kort, och måste alltid minst ha ett kort i sin e-wallet. Tekniker du ska använda i denna app är följande:

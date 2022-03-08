@@ -30,14 +30,18 @@ const cardsSlice = createSlice({
   // reducers/actions
   reducers: {
     updateCards: (state, action) => {
-      state.cards.find(card => {
-        if(card.cardNr === action.payload.cardNr) {
-          alert("It's not recommended to have two cards with the same cardnumber")
-          return
-        } else {
-          state.cards.push(action.payload);
-        }
-      })
+      
+      // test kod
+      // state.cards.find(card => {
+      //   if(card.cardNr === action.payload.cardNr) {
+      //     alert("It's not recommended to have two cards with the same cardnumber")
+      //     return
+      //   } else {
+      //     state.cards.push(action.payload);
+      //   }
+      // })
+
+      state.cards.push(action.payload);
     },
     removeCard: (state, action) => {
       state.cards.splice(action.payload, 1);
